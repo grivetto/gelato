@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Gelateria D'Antan a Torino. Gusta il gelato artigianale pluripremiato Tre Coni Gambero Rosso di Nicolò Arietti. Via Nicola Fabrizi, 37/C.">
+    <meta name="theme-color" content="#4F2926">
+    <title>Gelateria d'Antan Torino - Tre Coni Gambero Rosso</title>
+    
+    <!-- Favicon and Apple Touch Icon -->
+    <link rel="shortcut icon" href="https://www.gelateriadantan.it/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://www.gelateriadantan.it/wp-content/uploads/2024/05/favicon180b.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        
+        <!-- Header Component -->
+        <header>
+            <div class="logo-container">
+                <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/dantan300x181.png" alt="Gelateria d'Antan Logo">
+            </div>
+            <div class="header-badges">
+                <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/3coni-gamberorosso.png" alt="Tre Coni Gambero Rosso" class="badge-gambero">
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main>
+
+            <!-- SECTION: HOME -->
+            <section id="home" class="page-section active">
+                <span class="section-tag">Nicolò Arietti presenta</span>
+                <h1 class="page-title">Il Gelato Artigianale <span class="highlight-text">pluripremiato</span> d'Italia.</h1>
+                
+                <div class="hero-card">
+                    <h2>Tre Coni Gambero Rosso</h2>
+                    <p>Riconosciuti tra le migliori gelaterie d'Italia dal 2020 ad oggi. Qualità, etica e trasparenza nel nostro laboratorio a vista.</p>
+                    <button class="btn btn-secondary" data-go-to="contatti">Vieni a trovarci</button>
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-img-wrapper">
+                        <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/nicolo-arietti_gelato.jpg" alt="Nicolò Arietti mastro gelatiere">
+                    </div>
+                    <h3>Nicolò Arietti</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); max-width: 90%;">"Mi chiamo Nicolò Arietti e da quando sono nato faccio la cosa più buona e golosa che esista... Il gelato!"</p>
+                </div>
+
+                <h3 style="margin-top: 30px;">Le Specialità della Casa</h3>
+                <div class="product-grid" style="margin-top: 10px;">
+                    <div class="product-card" data-go-to="gelateria">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Torte</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/torte-gelato-torino.jpg" alt="Torte Gelato">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Torte Gelato & Semifredde</h4>
+                            <p class="product-desc">Basi di pan di Spagna di pasticceria unite alle combinazioni cremose dei nostri gusti gelato e mousse.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Produzione Artigianale</span>
+                                <span style="font-size: 18px;">🍰</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-go-to="gelateria">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Monoporzioni</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/monoporzioni-gelato-torino.jpg" alt="Monoporzioni Gelato">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Monoporzioni Perfette</h4>
+                            <p class="product-desc">Un cuore soffice di pan di Spagna circondato da fantasiosi gusti gelato. Il dessert ideale a portata di mano.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Da gustare subito</span>
+                                <span style="font-size: 18px;">🧁</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: GELATERIA (MENU) -->
+            <section id="gelateria" class="page-section">
+                <span class="section-tag">La nostra produzione</span>
+                <h2 class="page-title">I Prodotti d'Antan</h2>
+                
+                <!-- Category Horizontal Selector -->
+                <div class="horizontal-scroll" id="category-selector">
+                    <div class="scroll-card active" data-category="tutti">
+                        <span class="scroll-card-icon">🍦</span>
+                        <span class="scroll-card-title">Tutti i gusti</span>
+                    </div>
+                    <div class="scroll-card" data-category="gelato">
+                        <span class="scroll-card-icon">🍧</span>
+                        <span class="scroll-card-title">Gelato</span>
+                    </div>
+                    <div class="scroll-card" data-category="torte">
+                        <span class="scroll-card-icon">🍰</span>
+                        <span class="scroll-card-title">Torte</span>
+                    </div>
+                    <div class="scroll-card" data-category="dessert">
+                        <span class="scroll-card-icon">🧁</span>
+                        <span class="scroll-card-title">Dessert</span>
+                    </div>
+                    <div class="scroll-card" data-category="altro">
+                        <span class="scroll-card-icon">🍪</span>
+                        <span class="scroll-card-title">Altro</span>
+                    </div>
+                </div>
+
+                <!-- Products Catalog -->
+                <div class="product-grid" id="products-catalog">
+                    
+                    <!-- Item 1: Gelato Artigianale -->
+                    <div class="product-card" data-cat="gelato">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Artigianale</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/produzione-gelato-torino.jpg" alt="Gelato Artigianale">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Gelato Tradizionale</h4>
+                            <p class="product-desc">Ogni gusto ha la sua ricetta ben definita ed è bilanciato singolarmente per esaltare le materie prime fresche e di stagione. Dalle creme classiche ad abbinamenti unici come Lampone e Malvasia.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Gusti Stagionali</span>
+                                <span style="font-size: 16px; color: var(--accent-color);">⭐ Tre Coni</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Gelato Gastronomico -->
+                    <div class="product-card" data-cat="gelato">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Innovazione</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/produzione-gelato-torino.jpg" alt="Gelato Gastronomico" style="filter: hue-rotate(45deg);">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Gelato Gastronomico</h4>
+                            <p class="product-desc">Gelato salato da cucina studiato appositamente per armonizzarsi ed accompagnare piatti salati gourmet. Chiedi a Nicolò per i dettagli e abbinamenti consigliati.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Salato / Gourmet</span>
+                                <span style="font-size: 16px; color: var(--primary-light);">👨‍🍳 Per Chef</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Torte Gelato -->
+                    <div class="product-card" data-cat="torte">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Torte</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/torte-gelato-torino.jpg" alt="Torte Gelato d'Antan">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Torte Gelato</h4>
+                            <p class="product-desc">Create artigianalmente con base di pan di Spagna fresco di pasticceria e i gusti unici del nostro gelato. Un connubio perfetto di freschezza.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Su Ordinazione</span>
+                                <span style="font-size: 16px;">🎂</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Torte Semifredde -->
+                    <div class="product-card" data-cat="torte">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Semifreddi</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/torte-gelato-torino.jpg" alt="Torte Semifredde d'Antan" style="filter: sepia(0.3);">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Torte Semifredde</h4>
+                            <p class="product-desc">Pan di Spagna soffice unito a svariate combinazioni di mousse vellutate e semifreddi raffinati. Dedicato ai palati più esigenti.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Lavorazione fine</span>
+                                <span style="font-size: 16px;">🧁</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Monoporzioni -->
+                    <div class="product-card" data-cat="dessert">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Singoli</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/monoporzioni-gelato-torino.jpg" alt="Monoporzioni Gelato d'Antan">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Le Monoporzioni</h4>
+                            <p class="product-desc">Monoporzioni create con un cuore morbido di pan di Spagna e deliziose combinazioni di gelato artigianale. Un piccolo dessert perfetto.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Pronti al consumo</span>
+                                <span style="font-size: 16px;">🍦</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Granite -->
+                    <div class="product-card" data-cat="altro">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Estivo</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/monoporzioni-gelato-torino.jpg" alt="Granite Artigianali" style="filter: saturate(1.8);">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Granite Siciliane</h4>
+                            <p class="product-desc">Frutta fresca selezionata e trasformata nella più fresca golosità dell'estate. Perfette per rinfrescarsi nei pomeriggi afosi.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Frutta Fresca 100%</span>
+                                <span style="font-size: 16px;">🍋</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: Biscotti di Pasticceria -->
+                    <div class="product-card" data-cat="altro">
+                        <div class="product-img-wrapper">
+                            <span class="product-tag">Pasticceria</span>
+                            <img src="https://www.gelateriadantan.it/wp-content/uploads/2024/05/mastro-gelatiere-torino.jpg" alt="Biscotti Favro Susa">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Biscotti di Pasticceria</h4>
+                            <p class="product-desc">Biscotti artigianali secchi e prelibatezze cotte direttamente nel rinomato Forno FAVRO di Susa. Il perfetto accompagnamento per il gelato.</p>
+                            <div class="product-footer">
+                                <span class="product-price">Dal Forno Favro</span>
+                                <span style="font-size: 16px;">🍪</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECTION: SERVIZI -->
+            <section id="servizi" class="page-section">
+                <span class="section-tag">Cosa facciamo</span>
+                <h2 class="page-title">I Nostri Servizi</h2>
+
+                <!-- Corso di Gelateria -->
+                <div class="service-box">
+                    <div class="service-header">
+                        <span style="font-size: 32px;">🎓</span>
+                        <div>
+                            <h3 style="margin-bottom: 2px;">Corsi di Gelateria</h3>
+                            <span class="service-badge">by Nicolò Arietti</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 15px;">
+                        Offriamo corsi professionali e amatoriali guidati direttamente dal mastro gelatiere Nicolò Arietti. Scopri la chimica del bilanciamento e i segreti tecnici per produrre un vero gelato artigianale unico.
+                    </p>
+                    <button class="btn btn-primary" data-go-to="contatti">Richiedi Info</button>
+                </div>
+
+                <!-- Catering Eventi -->
+                <div class="service-box">
+                    <div class="service-header">
+                        <span style="font-size: 32px;">🚚</span>
+                        <div>
+                            <h3 style="margin-bottom: 2px;">Catering per Eventi</h3>
+                            <span class="service-badge">Feste e Matrimoni</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 15px;">
+                        Porta la dolcezza della Gelateria d'Antan al tuo evento speciale. Offriamo un servizio di catering gelato professionale e personalizzabile, ideale per compleanni, matrimoni, inaugurazioni ed eventi aziendali.
+                    </p>
+                    <button class="btn btn-primary" data-go-to="contatti">Prenota Servizio</button>
+                </div>
+
+                <!-- Produzione Conto Terzi -->
+                <div class="service-box">
+                    <div class="service-header">
+                        <span style="font-size: 32px;">🏪</span>
+                        <div>
+                            <h3 style="margin-bottom: 2px;">Forniture Conto Terzi</h3>
+                            <span class="service-badge">Ristorazione B2B</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 15px;">
+                        Forniamo gelati, torte e monoporzioni artigianali personalizzati a ristoranti, bar e attività gourmet del territorio piemontese, garantendo sempre la massima freschezza e materie prime d'eccellenza.
+                    </p>
+                    <button class="btn btn-primary" data-go-to="contatti">Contatta per Forniture B2B</button>
+                </div>
+            </section>
+
+            <!-- SECTION: CHI SIAMO -->
+            <section id="chisiamo" class="page-section">
+                <span class="section-tag">La nostra storia</span>
+                <h2 class="page-title">Qualità, Genuinità & Bilanciamento</h2>
+
+                <p style="font-size: 14px; margin-bottom: 15px;">
+                    La carriera di gelatiere di <strong>Nicolò Arietti</strong> inizia ufficialmente il 1° maggio del 2008 con l'apertura di Gelati d'Antan a Torino. 
+                </p>
+                <p style="font-size: 14px; margin-bottom: 15px;">
+                    Spinto dalla passione culinaria, Nicolò ha concentrato i suoi studi sul <strong>bilanciamento</strong>: la tecnica matematica e chimica che permette ad ogni artigiano di creare ricette bilanciate in totale autonomia, rifiutando basi industriali standardizzate.
+                </p>
+
+                <div class="hero-card" style="background: linear-gradient(135deg, var(--accent-color) 0%, #2e4a21 100%); margin: 25px 0;">
+                    <h3 style="color: var(--white); margin-bottom: 8px;">Laboratorio a Vista</h3>
+                    <p style="margin-bottom: 0; font-size: 13px;">
+                        "La mia gelateria nasce con un laboratorio interamente a vista. Un concetto etico fondamentale per me: non nascondere nulla al cliente, garantendo massima trasparenza su ingredienti e preparazione."
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 25px;">Premi e Riconoscimenti</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2020 - 2024</span>
+                        <h4 class="timeline-title">Tre Coni Gambero Rosso</h4>
+                        <p style="font-size: 12.5px; color: var(--text-secondary);">Ottenimento del massimo riconoscimento italiano per le gelaterie d'eccellenza, riconfermato ogni anno.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2019</span>
+                        <h4 class="timeline-title">Cavalieri del Gelato Italiano</h4>
+                        <p style="font-size: 12.5px; color: var(--text-secondary);">Investitura ufficiale tra i maestri accademici del gelato.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2018</span>
+                        <h4 class="timeline-title">Gelatiere Emergente d'Italia</h4>
+                        <p style="font-size: 12.5px; color: var(--text-secondary);">Premiato dalla prestigiosa guida del Gambero Rosso.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2017</span>
+                        <h4 class="timeline-title">Vincitore Gelato Festival Torino</h4>
+                        <p style="font-size: 12.5px; color: var(--text-secondary);">Primo posto sul palco torinese del Gelato Festival con le creazioni di Nicolò.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CONTATTI -->
+            <section id="contatti" class="page-section">
+                <span class="section-tag">Orari e contatti</span>
+                <h2 class="page-title">Vieni a Trovarci</h2>
+
+                <!-- Dynamic status indicator (Open/Closed) -->
+                <div id="live-status-container" class="live-status">
+                    <!-- Loaded dynamically via JS -->
+                    <span class="live-status-dot"></span> Caricamento orari...
+                </div>
+
+                <!-- Opening Hours Card -->
+                <div class="hours-card">
+                    <h3 style="font-size: 16px; border-bottom: 1px solid rgba(79, 41, 38, 0.08); padding-bottom: 8px; margin-bottom: 12px;">Orari di Apertura</h3>
+                    <div class="hours-row" data-day="1">
+                        <span class="hours-day">Lunedì</span>
+                        <span class="hours-time">15:00 – 22:00</span>
+                    </div>
+                    <div class="hours-row" data-day="2">
+                        <span class="hours-day">Martedì</span>
+                        <span class="hours-time">11:30 – 22:00</span>
+                    </div>
+                    <div class="hours-row" data-day="3">
+                        <span class="hours-day">Mercoledì</span>
+                        <span class="hours-time">11:30 – 22:00</span>
+                    </div>
+                    <div class="hours-row" data-day="4">
+                        <span class="hours-day">Giovedì</span>
+                        <span class="hours-time">11:30 – 22:00</span>
+                    </div>
+                    <div class="hours-row" data-day="5">
+                        <span class="hours-day">Venerdì</span>
+                        <span class="hours-time">11:30 – 22:00</span>
+                    </div>
+                    <div class="hours-row" data-day="6">
+                        <span class="hours-day">Sabato</span>
+                        <span class="hours-time">11:30 – 22:00</span>
+                    </div>
+                    <div class="hours-row" data-day="0">
+                        <span class="hours-day">Domenica</span>
+                        <span class="hours-time">10:30 – 13:00 / 15:00 – 22:00</span>
+                    </div>
+                </div>
+
+                <!-- Click-to-action Contact Items -->
+                <a href="tel:+393314675801" class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Telefono</span>
+                        <span class="contact-value">+39 331 467 5801</span>
+                    </div>
+                </a>
+
+                <a href="mailto:info@gelateriadantan.it" class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">info@gelateriadantan.it</span>
+                    </div>
+                </a>
+
+                <a href="https://maps.google.com/?q=Gelateria+d'Antan+Torino+Via+Nicola+Fabrizi+37/C" target="_blank" class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <span class="contact-label">Indirizzo</span>
+                        <span class="contact-value" style="font-size: 13.5px;">Via Nicola Fabrizi, 37/C, Torino</span>
+                    </div>
+                </a>
+
+                <!-- Contact Form -->
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">Invia un messaggio</h3>
+                <form id="contact-form" style="display: flex; flex-direction: column; gap: 12px; background-color: var(--white); padding: 20px; border-radius: var(--border-radius-md); box-shadow: var(--box-shadow); border: 1px solid rgba(79, 41, 38, 0.04);">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label for="form-name" style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Nome</label>
+                        <input type="text" id="form-name" required placeholder="Inserisci il tuo nome" style="padding: 10px 12px; border-radius: var(--border-radius-sm); border: 1px solid rgba(79, 41, 38, 0.15); font-family: inherit; font-size: 14px; color: var(--text-primary); outline: none;">
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label for="form-email" style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Email</label>
+                        <input type="email" id="form-email" required placeholder="esempio@email.com" style="padding: 10px 12px; border-radius: var(--border-radius-sm); border: 1px solid rgba(79, 41, 38, 0.15); font-family: inherit; font-size: 14px; color: var(--text-primary); outline: none;">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label for="form-message" style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Messaggio</label>
+                        <textarea id="form-message" required rows="4" placeholder="Scrivi qui la tua richiesta..." style="padding: 10px 12px; border-radius: var(--border-radius-sm); border: 1px solid rgba(79, 41, 38, 0.15); font-family: inherit; font-size: 14px; color: var(--text-primary); outline: none; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Invia Messaggio 🍦</button>
+                </form>
+
+                <!-- Embedded Maps -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d2817.8447385412497!2d7.644199976728043!3d45.07881020235313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d7904323719%3A0xe54d24ea2403758b!2sGelateria%20d&#39;Antan!5e0!3m2!1sit!2sit!4v1717940000000!5m2!1sit!2sit" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Floating Quick Call Action (FAB) -->
+        <div class="fab-container">
+            <a href="https://maps.google.com/?q=Gelateria+d'Antan+Torino+Via+Nicola+Fabrizi+37/C" target="_blank" class="fab fab-map" aria-label="Mappa e indicazioni">📍</a>
+            <a href="tel:+393314675801" class="fab fab-call" aria-label="Chiama in gelateria">📞</a>
+        </div>
+
+        <!-- Bottom Navigation Bar Component -->
+        <nav class="bottom-nav">
+            <a href="#home" class="nav-item active" data-target="home">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="#gelateria" class="nav-item" data-target="gelateria">
+                <span class="nav-icon">🍦</span>
+                <span>Gelateria</span>
+            </a>
+            <a href="#servizi" class="nav-item" data-target="servizi">
+                <span class="nav-icon">💼</span>
+                <span>Servizi</span>
+            </a>
+            <a href="#chisiamo" class="nav-item" data-target="chisiamo">
+                <span class="nav-icon">👤</span>
+                <span>Chi Siamo</span>
+            </a>
+            <a href="#contatti" class="nav-item" data-target="contatti">
+                <span class="nav-icon">📍</span>
+                <span>Contatti</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script>
+        // Simple client-side product filtering category logic
+        document.querySelectorAll('#category-selector .scroll-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active class from selectors
+                document.querySelectorAll('#category-selector .scroll-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                
+                const cat = card.getAttribute('data-category');
+                
+                // Filter products
+                document.querySelectorAll('#products-catalog .product-card').forEach(p => {
+                    if (cat === 'tutti' || p.getAttribute('data-cat') === cat) {
+                        p.style.display = 'flex';
+                    } else {
+                        p.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
