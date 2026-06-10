@@ -1,0 +1,1656 @@
+/* ==========================================================================
+   GELATERIA D'ANTAN RESTYLING - DESIGN SYSTEM & THEMES
+   ========================================================================== */
+
+/* --- GOOGLE FONTS PREFETCH PATHS --- */
+/* (Fonts are loaded dynamically via JS to avoid bloat on page load) */
+
+:root {
+  /* Common System / Layout Variables */
+  --header-height: 80px;
+  --transition-speed: 0.4s;
+  --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Transition Helpers */
+  --transition-all: all var(--transition-speed) cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* ==========================================================================
+   THEME DEFINITIONS (CSS CUSTOM PROPERTIES)
+   ========================================================================== */
+
+/* --- 1. MODERN THEME --- */
+.theme-modern {
+  --bg-color: #f6f4f0;
+  --bg-surface: #ffffff;
+  --text-color: #2b2725;
+  --text-muted: #726c68;
+  --primary-color: #d87b64; /* Terracotta */
+  --primary-hover: #c36750;
+  --secondary-color: #eae5db;
+  --accent-color: #556b2f; /* Sage Green */
+  
+  --font-family-title: "Playfair Display", "Didot", Georgia, serif;
+  --font-family-body: "Outfit", "Inter", var(--font-family-system);
+  
+  --border-radius: 18px;
+  --border-radius-sm: 8px;
+  --card-border: 1px solid rgba(0, 0, 0, 0.05);
+  --card-bg: #ffffff;
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-blur: 12px;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  
+  /* Custom scoop colors (Modern - soft warm colors) */
+  --scoop-1-color: #ebd1bd;
+  --scoop-2-color: #adcbb0;
+  --scoop-3-color: #e6b2ab;
+}
+
+/* --- 2. FUTURISTIC THEME --- */
+.theme-futuristic {
+  --bg-color: #05050a;
+  --bg-surface: #0a0a14;
+  --text-color: #d1f4ff;
+  --text-muted: #5e6b8a;
+  --primary-color: #00f0ff; /* Neon Cyan */
+  --primary-hover: #00b8c7;
+  --secondary-color: #121020;
+  --accent-color: #ff007f; /* Cyber Pink */
+  
+  --font-family-title: "Orbitron", "Rajdhani", sans-serif;
+  --font-family-body: "Space Grotesk", "Share Tech Mono", monospace;
+  
+  --border-radius: 4px;
+  --border-radius-sm: 2px;
+  --card-border: 1px solid rgba(0, 240, 255, 0.2);
+  --card-bg: rgba(10, 10, 20, 0.85);
+  
+  --shadow-sm: 0 0 10px rgba(0, 240, 255, 0.15);
+  --shadow-md: 0 0 20px rgba(0, 240, 255, 0.25), inset 0 0 8px rgba(0, 240, 255, 0.05);
+  --shadow-lg: 0 0 35px rgba(255, 0, 127, 0.3), 0 0 15px rgba(0, 240, 255, 0.2);
+  
+  --glass-bg: rgba(6, 6, 12, 0.8);
+  --glass-blur: 15px;
+  --glass-border: 1px solid rgba(0, 240, 255, 0.2);
+  
+  /* Custom scoop colors (Futuristic - radioactive glowing) */
+  --scoop-1-color: #00ffcc;
+  --scoop-2-color: #ff007f;
+  --scoop-3-color: #7000ff;
+}
+
+/* --- 3. RETRO THEME --- */
+.theme-retro {
+  --bg-color: #fbf6ee;
+  --bg-surface: #ffffff;
+  --text-color: #3b2f2f; /* Espresso brown */
+  --text-muted: #6e5e54;
+  --primary-color: #8fae8f; /* Pistachio Green */
+  --primary-hover: #7ba07b;
+  --secondary-color: #f7e6cf; /* Butter cream */
+  --accent-color: #e27269; /* Strawberry coral */
+  
+  --font-family-title: "Italiana", "Bodoni Moda", serif;
+  --font-family-body: "Lora", "Merriweather", serif;
+  
+  --border-radius: 0px;
+  --border-radius-sm: 0px;
+  --card-border: 3px solid #3b2f2f;
+  --card-bg: #ffffff;
+  
+  /* Solid shadows typical of vintage print/pop-art */
+  --shadow-sm: 3px 3px 0px #3b2f2f;
+  --shadow-md: 6px 6px 0px #3b2f2f;
+  --shadow-lg: 10px 10px 0px #3b2f2f;
+  
+  --glass-bg: rgba(251, 246, 238, 0.95);
+  --glass-blur: 0px;
+  --glass-border: 2px solid #3b2f2f;
+  
+  /* Custom scoop colors (Retro - creamy natural) */
+  --scoop-1-color: #faecd8;
+  --scoop-2-color: #cadfca;
+  --scoop-3-color: #f8c8c4;
+}
+
+/* ==========================================================================
+   RESET & LAYOUT BASE
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family-body);
+  line-height: 1.6;
+  font-size: 16px;
+  transition: var(--transition-all);
+  overflow-x: hidden;
+  padding-bottom: 120px; /* Space for floating presenter dock */
+}
+
+/* Global Elements styling to support themes dynamically */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  transition: var(--transition-all);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.theme-futuristic .btn-primary {
+  color: #05050a;
+  box-shadow: 0 0 15px var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theme-retro .btn-primary {
+  border: 3px solid #3b2f2f;
+  color: #3b2f2f;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.theme-futuristic .btn-primary:hover {
+  box-shadow: 0 0 25px var(--primary-color), 0 0 10px var(--accent-color);
+  background-color: var(--primary-color);
+}
+
+.theme-retro .btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #3b2f2f;
+  background-color: var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-muted);
+}
+
+.theme-futuristic .btn-secondary {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theme-retro .btn-secondary {
+  border: 3px solid #3b2f2f;
+  background-color: var(--secondary-color);
+  color: #3b2f2f;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.theme-retro .btn-secondary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #3b2f2f;
+}
+
+.theme-futuristic .btn-secondary:hover {
+  background-color: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+/* ==========================================================================
+   PRESENTER DOCK (FLOATING DASHBOARD)
+   ========================================================================== */
+.presenter-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  padding: 16px 24px;
+  z-index: 10000;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  font-family: var(--font-family-system);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Always force the presenter dock to have its own consistent high-tech presentation style */
+.presenter-dock,
+.presenter-dock * {
+  color: #1a1a1a !important;
+}
+
+.presenter-dock .dock-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.presenter-dock .dock-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.presenter-dock .dock-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: #666 !important;
+  margin-top: 2px;
+}
+
+.presenter-dock .dock-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.presenter-dock .dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.presenter-dock .dock-btn:hover {
+  background: rgba(0,0,0,0.08);
+}
+
+.presenter-dock .dock-btn.active {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.presenter-dock .dock-btn.active * {
+  color: #ffffff !important;
+}
+
+.presenter-dock .btn-icon {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.presenter-dock .btn-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.presenter-dock .dock-details {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.presenter-dock .theme-desc-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.presenter-dock .theme-desc-text {
+  color: #444 !important;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  z-index: 999;
+  background-color: var(--bg-color);
+  transition: var(--transition-all);
+}
+
+.theme-modern .main-header {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.theme-futuristic .main-header {
+  background-color: rgba(5, 5, 10, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+.theme-retro .main-header {
+  border-bottom: 3px double #3b2f2f;
+  background-color: var(--bg-color);
+}
+
+.header-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+.logo-subtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.theme-futuristic .logo-title {
+  text-shadow: 0 0 10px var(--primary-color);
+}
+
+.theme-retro .logo-title {
+  font-style: italic;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* Modern navbar hover line */
+.theme-modern .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.theme-modern .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Futuristic hover glow and bracket style */
+.theme-futuristic .nav-link {
+  font-family: var(--font-family-body);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theme-futuristic .nav-link::before {
+  content: '[';
+  opacity: 0;
+  margin-right: 4px;
+  transition: var(--transition-fast);
+}
+
+.theme-futuristic .nav-link::after {
+  content: ']';
+  opacity: 0;
+  margin-left: 4px;
+  transition: var(--transition-fast);
+}
+
+.theme-futuristic .nav-link:hover::before,
+.theme-futuristic .nav-link:hover::after {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+/* Retro classic hover underline */
+.theme-retro .nav-link {
+  font-family: var(--font-family-title);
+  font-size: 1.1rem;
+}
+
+.theme-retro .nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  padding: 80px 0;
+  min-height: calc(85vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+  border-radius: 50px;
+}
+
+.theme-futuristic .hero-badge {
+  background-color: rgba(0, 240, 255, 0.1);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.theme-retro .hero-badge {
+  background-color: var(--secondary-color);
+  border: 2px solid #3b2f2f;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  color: #3b2f2f;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.theme-modern .hero-title {
+  font-size: 3.8rem;
+}
+
+.theme-futuristic .hero-title {
+  font-family: var(--font-family-title);
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+.theme-retro .hero-title {
+  font-family: var(--font-family-title);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  max-width: 520px;
+}
+
+.theme-futuristic .hero-description {
+  font-family: var(--font-family-body);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  transition: var(--transition-all);
+}
+
+/* Theme specific image frame designs */
+.theme-modern .hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  z-index: -1;
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .hero-image {
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+.theme-futuristic .hero-image-wrapper::after {
+  content: 'SYSTEM ACTIVE';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 4px 8px;
+  font-family: monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.theme-retro .hero-image {
+  border: 3px solid #3b2f2f;
+  box-shadow: var(--shadow-md);
+  padding: 12px;
+  background-color: white;
+}
+
+/* ==========================================================================
+   AWARDS BANNER
+   ========================================================================== */
+.awards-banner {
+  background-color: var(--bg-surface);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 40px 0;
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .awards-banner {
+  background-color: var(--secondary-color);
+  border-top: 1px dashed rgba(0, 240, 255, 0.3);
+  border-bottom: 1px dashed rgba(0, 240, 255, 0.3);
+  box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.theme-retro .awards-banner {
+  border-top: 3px solid #3b2f2f;
+  border-bottom: 3px solid #3b2f2f;
+  background-color: var(--secondary-color);
+}
+
+.awards-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.award-icon {
+  font-size: 2.5rem;
+}
+
+.award-text h3 {
+  font-size: 1.15rem;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.theme-futuristic .award-text h3 {
+  font-family: var(--font-family-title);
+  text-transform: uppercase;
+}
+
+.award-text p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   PRODUCTION SECTION (LA GELATERIA)
+   ========================================================================== */
+.production-section {
+  padding: 100px 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.theme-futuristic .section-subtitle {
+  font-family: var(--font-family-body);
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.theme-futuristic .section-title {
+  text-transform: uppercase;
+}
+
+.section-description {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+/* --- PRODUCTS GRID --- */
+.products-grid {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  border: var(--card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition-all);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-retro .product-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.06);
+}
+
+.product-info {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 1.35rem;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+.theme-futuristic .product-title {
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  padding-bottom: 8px;
+}
+
+.product-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.card-link {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   SERVICES SECTION
+   ========================================================================== */
+.services-section {
+  padding: 100px 0;
+  background-color: var(--bg-surface);
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .services-section {
+  background-color: var(--bg-color);
+  border-top: 1px dashed rgba(0, 240, 255, 0.15);
+}
+
+.theme-retro .services-section {
+  border-top: 3px solid #3b2f2f;
+  background-color: var(--secondary-color);
+}
+
+.services-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  margin-bottom: 50px;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.service-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  transition: var(--transition-all);
+}
+
+.theme-modern .service-item:hover {
+  background-color: var(--bg-color);
+}
+
+.theme-futuristic .service-item {
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  background: rgba(10, 10, 20, 0.5);
+}
+
+.theme-futuristic .service-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.theme-retro .service-item {
+  background-color: #ffffff;
+  border: 3px solid #3b2f2f;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-retro .service-item:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+  font-family: var(--font-family-title);
+}
+
+.theme-retro .service-number {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+.service-title {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.theme-futuristic .service-title {
+  text-transform: uppercase;
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   LABORATORY INTERACTIVE MIXER SECTION
+   ========================================================================== */
+.lab-section {
+  padding: 100px 0;
+}
+
+.lab-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border-radius: var(--border-radius);
+  border: var(--card-border);
+  box-shadow: var(--shadow-md);
+  padding: 50px;
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .lab-container {
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.15);
+  background: rgba(10,10,20,0.85);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-futuristic .lab-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.theme-retro .lab-container {
+  border: 3px solid #3b2f2f;
+  box-shadow: var(--shadow-md);
+}
+
+/* --- GELATO CONE VISUAL --- */
+.lab-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lab-cone-preview {
+  position: relative;
+  width: 160px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.scoop {
+  width: 110px;
+  height: 90px;
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  box-shadow: inset -10px -10px 15px rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.theme-futuristic .scoop {
+  box-shadow: 0 0 25px currentColor, inset -10px -10px 20px rgba(0,0,0,0.4);
+  opacity: 0.85;
+}
+
+.theme-retro .scoop {
+  border: 3px solid #3b2f2f;
+  box-shadow: inset -5px -5px 0px rgba(0,0,0,0.05);
+}
+
+.scoop-1 {
+  bottom: 85px;
+  z-index: 10;
+}
+
+.scoop-2 {
+  bottom: 125px;
+  z-index: 11;
+  width: 100px;
+  height: 82px;
+}
+
+.scoop-3 {
+  bottom: 160px;
+  z-index: 12;
+  width: 90px;
+  height: 74px;
+}
+
+.cone-svg {
+  width: 130px;
+  height: 140px;
+  z-index: 5;
+  position: relative;
+}
+
+/* --- SELECTORS --- */
+.flavor-category h4 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.theme-futuristic .flavor-category h4 {
+  font-family: var(--font-family-body);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.flavor-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.flavor-btn {
+  padding: 10px 18px;
+  border-radius: 50px;
+  border: 1px solid var(--text-muted);
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.flavor-btn:hover {
+  background: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.theme-modern .flavor-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.theme-futuristic .flavor-btn {
+  border-radius: var(--border-radius);
+  border-color: rgba(0, 240, 255, 0.4);
+  font-family: var(--font-family-body);
+  text-transform: uppercase;
+}
+
+.theme-futuristic .flavor-btn.active {
+  background-color: var(--primary-color);
+  color: #05050a;
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.theme-retro .flavor-btn {
+  border-radius: var(--border-radius);
+  border: 3px solid #3b2f2f;
+  background-color: white;
+  font-family: var(--font-family-body);
+}
+
+.theme-retro .flavor-btn.active {
+  background-color: var(--secondary-color);
+  box-shadow: 3px 3px 0px #3b2f2f;
+  transform: translate(-2px, -2px);
+}
+
+.lab-result {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 20px;
+  font-size: 0.95rem;
+}
+
+.theme-futuristic .lab-result {
+  border-top-color: rgba(0, 240, 255, 0.2);
+  font-family: var(--font-family-body);
+}
+
+.theme-retro .lab-result {
+  border-top: 3px dashed #3b2f2f;
+}
+
+/* ==========================================================================
+   ABOUT SECTION (CHI SIAMO)
+   ========================================================================== */
+.about-section {
+  padding: 100px 0;
+}
+
+.about-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.theme-retro .about-image {
+  border: 3px solid #3b2f2f;
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+  background-color: white;
+}
+
+.vintage-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.theme-futuristic .vintage-badge {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  background-color: rgba(6, 6, 12, 0.9);
+  color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+  font-family: var(--font-family-body);
+}
+
+.theme-retro .vintage-badge {
+  background-color: var(--accent-color);
+  border: 3px solid #3b2f2f;
+  color: #3b2f2f;
+  box-shadow: var(--shadow-sm);
+  border-radius: 0;
+  font-family: var(--font-family-title);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 30px;
+}
+
+.theme-futuristic .about-stats {
+  border-top: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.theme-retro .about-stats {
+  border-top: 3px double #3b2f2f;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  font-family: var(--font-family-title);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.theme-retro .stat-num {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CONTACTS SECTION
+   ========================================================================== */
+.contact-section {
+  padding: 100px 0;
+  background-color: var(--bg-surface);
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .contact-section {
+  background-color: var(--secondary-color);
+  border-top: 1px dashed rgba(0, 240, 255, 0.15);
+}
+
+.theme-retro .contact-section {
+  border-top: 3px solid #3b2f2f;
+  background-color: var(--bg-color);
+}
+
+.contact-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+}
+
+.info-list {
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .info-icon {
+  background-color: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.theme-retro .info-icon {
+  background-color: var(--secondary-color);
+  border: 3px solid #3b2f2f;
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+  color: #3b2f2f;
+}
+
+.info-text h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.info-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.social-btn.instagram {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.social-btn.google-review {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.theme-futuristic .social-btn {
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-body);
+  text-transform: uppercase;
+}
+
+.theme-futuristic .social-btn.instagram {
+  background-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+.theme-futuristic .social-btn.google-review {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.theme-retro .social-btn {
+  border-radius: 0;
+  border: 3px solid #3b2f2f;
+  box-shadow: var(--shadow-sm);
+  color: #3b2f2f;
+}
+
+.theme-retro .social-btn.instagram {
+  background-color: var(--accent-color);
+}
+
+.theme-retro .social-btn.google-review {
+  background-color: var(--secondary-color);
+}
+
+.theme-retro .social-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* --- HOURS PANEL --- */
+.contact-hours-panel {
+  background-color: var(--bg-color);
+  border-radius: var(--border-radius);
+  border: var(--card-border);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .contact-hours-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+}
+
+.theme-retro .contact-hours-panel {
+  border: 3px solid #3b2f2f;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.panel-title {
+  font-size: 1.40rem;
+  margin-bottom: 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 12px;
+}
+
+.theme-futuristic .panel-title {
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+.theme-retro .panel-title {
+  border-bottom: 3px double #3b2f2f;
+}
+
+.hours-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed rgba(0,0,0,0.04);
+  padding-bottom: 8px;
+}
+
+.theme-futuristic .hours-list li {
+  font-family: var(--font-family-body);
+  border-bottom: 1px dashed rgba(0, 240, 255, 0.1);
+}
+
+.theme-retro .hours-list li {
+  border-bottom: 1px dashed #3b2f2f;
+}
+
+.hours-list li .day {
+  font-weight: 600;
+}
+
+.hours-list li .time {
+  color: var(--text-muted);
+}
+
+.theme-futuristic .hours-list li .time {
+  color: var(--primary-color);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.main-footer {
+  background-color: var(--bg-surface);
+  color: var(--text-color);
+  padding: 60px 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  transition: var(--transition-all);
+}
+
+.theme-futuristic .main-footer {
+  background-color: #030307;
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+.theme-retro .main-footer {
+  border-top: 3px solid #3b2f2f;
+  background-color: var(--secondary-color);
+}
+
+.footer-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand h3 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.theme-futuristic .footer-copy {
+  border-top: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.theme-retro .footer-copy {
+  border-top: 1px solid #3b2f2f;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVENEES)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-content {
+    align-items: center;
+  }
+  
+  .hero-image-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .services-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .lab-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .theme-modern .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .awards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .main-nav {
+    display: none; /* Mobile menu toggling logic in JS */
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .presenter-dock {
+    width: 95%;
+    padding: 12px 16px;
+    bottom: 16px;
+  }
+  
+  .presenter-dock .dock-options {
+    gap: 6px;
+  }
+  
+  .presenter-dock .dock-btn {
+    padding: 6px;
+  }
+  
+  .presenter-dock .btn-icon {
+    font-size: 1.1rem;
+  }
+  
+  .presenter-dock .btn-label {
+    font-size: 0.65rem;
+  }
+}
+
+/* ==========================================================================
+   FUTURISTIC SCANLINES & CYBER EFFECT (Canvas details)
+   ========================================================================== */
+.theme-futuristic #futuristic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.3;
+}
